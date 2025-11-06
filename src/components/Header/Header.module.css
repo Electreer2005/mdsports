@@ -1,0 +1,476 @@
+.header {
+    background: var(--radio-charcoal);
+    color: var(--radio-white);
+    border-bottom: 3px solid var(--radio-gold);
+    box-shadow: var(--radio-shadow-strong);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 80px;
+    gap: 2rem;
+}
+
+/* Logo Section */
+.logoSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--radio-gold);
+    box-shadow: var(--radio-glow);
+    transition: all 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--radio-gold);
+}
+
+.stationInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.stationName {
+    color: var(--radio-gold);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.stationSlogan {
+    color: var(--radio-smoke);
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-normal);
+    opacity: 0.8;
+}
+
+/* Navigation */
+.nav {
+    flex: 1;
+}
+
+.navList {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--radio-white);
+    font-weight: var(--font-weight-medium);
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.navLink:hover {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--radio-hover);
+    transform: translateY(-1px);
+}
+
+.navLink.active {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    font-weight: var(--font-weight-semibold);
+}
+
+.navLink.active::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: var(--radio-charcoal);
+    border-radius: 1px;
+}
+
+.navIcon {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Live Match Indicator */
+.liveMatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--radio-gold);
+    flex-shrink: 0;
+    min-width: 120px;
+}
+
+.matchInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.9rem;
+}
+
+.team {
+    color: var(--radio-white);
+    font-size: 0.8rem;
+}
+
+.score {
+    color: var(--radio-gold);
+    font-size: 1rem;
+}
+
+.matchStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.liveDot {
+    width: 6px;
+    height: 6px;
+    background: var(--radio-playing);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.liveText {
+    color: var(--radio-playing);
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Mobile Menu Button */
+.mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--radio-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.mobileMenuButton:hover {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--radio-gold);
+}
+
+/* Mobile Menu Overlay */
+.mobileMenuOverlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 85%;
+    height: 100vh;
+    background: var(--radio-charcoal);
+    z-index: 1001;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.mobileMenuOverlay.active {
+    left: 0;
+}
+
+.mobileMenuContent {
+    padding: 2rem 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mobile Live Match */
+.mobileLiveMatch {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--radio-gold);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.mobileLiveMatch .matchInfo {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.mobileLiveMatch .matchStatus {
+    justify-content: center;
+}
+
+.mobileLiveMatch .liveText {
+    font-size: 0.8rem;
+}
+
+/* Mobile Navigation */
+.mobileNavList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mobileNavLink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--radio-white);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.mobileNavLink:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: var(--radio-gold);
+}
+
+.mobileNavLink.active {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    border-left-color: var(--radio-charcoal);
+    font-weight: var(--font-weight-semibold);
+}
+
+.mobileNavIcon {
+    font-size: 1.2rem;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobileNavLabel {
+    flex: 1;
+    font-weight: var(--font-weight-medium);
+}
+
+.mobileNavArrow {
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.mobileNavLink:hover .mobileNavArrow {
+    transform: translateX(4px);
+}
+
+/* Mobile Footer */
+.mobileFooter {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileStats {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.mobileStats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mobileStats .statNumber {
+    color: var(--radio-gold);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.mobileStats .statLabel {
+    font-size: 0.7rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Backdrop */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .headerContainer {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .navLink {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .liveMatch {
+        min-width: 110px;
+    }
+}
+
+@media (max-width: 768px) {
+    .headerContainer {
+        flex-wrap: wrap;
+        height: 70px;
+        padding: 0 1rem;
+        gap: 1rem;
+    }
+
+    .logoSection {
+        order: 1;
+        flex: 1;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .liveMatch {
+        order: 2;
+        display: none; /* Ocultamos en móvil ya que lo movemos al menú */
+    }
+
+    .mobileMenuButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        order: 3;
+    }
+
+    .stationName {
+        font-size: 1.25rem;
+    }
+
+    .stationSlogan {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headerContainer {
+        padding: 0 0.5rem;
+    }
+
+    .logoSection {
+        gap: 0.8rem;
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .stationName {
+        font-size: 1.1rem;
+    }
+
+    .stationSlogan {
+        display: none; /* Ocultamos el slogan en móviles muy pequeños */
+    }
+
+    .mobileMenuOverlay {
+        width: 100%;
+    }
+
+    .mobileMenuContent {
+        padding: 1.5rem 1rem;
+    }
+
+    .mobileNavLink {
+        padding: 1rem;
+    }
+
+    .mobileStats {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+}
+
+/* Estilos para tablets en landscape */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .mobileMenuOverlay {
+        width: 60%;
+    }
+    
+    .mobileMenuContent {
+        padding: 1.5rem;
+    }
+    
+    .mobileNavLink {
+        padding: 0.8rem 1.5rem;
+    }
+}
