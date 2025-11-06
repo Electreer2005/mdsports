@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* Colores Principales */
+  --radio-gold: #FFD700;
+  --radio-white: #FFFFFF;
+  --radio-charcoal: #2F2F2F;
+  
+  /* Colores Secundarios */
+  --radio-cream: #FFF8DC;
+  --radio-bright-gold: #FFE55C;
+  --radio-dark-gold: #B8860B;
+  --radio-smoke: #F5F5F5;
+  
+  /* Colores Funcionales */
+  --radio-background: var(--radio-white);
+  --radio-surface: var(--radio-cream);
+  --radio-text-primary: var(--radio-charcoal);
+  --radio-text-secondary: #5A5A5A;
+  --radio-accent: var(--radio-gold);
+  --radio-hover: var(--radio-bright-gold);
+  
+  /* Componentes Específicos para Radio */
+  --radio-player-bg: var(--radio-charcoal);
+  --radio-controls-bg: var(--radio-gold);
+  --radio-progress-bar: var(--radio-bright-gold);
+  --radio-volume-slider: var(--radio-dark-gold);
+  
+  /* Estados */
+  --radio-playing: #4CAF50;
+  --radio-paused: #FF9800;
+  --radio-error: #F44336;
+  
+  /* Efectos */
+  --radio-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+  --radio-glow: 0 0 8px rgba(255, 215, 0, 0.3);
+  --radio-shadow-strong: 0 4px 20px rgba(255, 215, 0, 0.25);
+  
+  /* Tipografía */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--radio-background);
+  color: var(--radio-text-primary);
+  line-height: 1.6;
+}

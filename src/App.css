@@ -1,0 +1,68 @@
+.MainContainer{
+  margin-bottom: 60px;
+  min-height: calc(100vh - 80px); /* Ajusta según la altura del header */
+}
+
+/* Layout Principal */
+.radio-app {
+  background: var(--radio-background);
+  color: var(--radio-text-primary);
+}
+
+/* Header de la Radio */
+.radio-header {
+  background: var(--radio-charcoal);
+  color: var(--radio-white);
+  border-bottom: 3px solid var(--radio-gold);
+}
+
+/* Reproductor Principal */
+.radio-player {
+  background: var(--radio-player-bg);
+  color: var(--radio-white);
+  box-shadow: var(--radio-shadow);
+}
+
+.radio-controls {
+  background: var(--radio-controls-bg);
+  color: var(--radio-charcoal);
+}
+
+.play-button {
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  background: var(--radio-hover);
+  box-shadow: var(--radio-glow);
+}
+
+/* Barra de Progreso */
+.progress-bar {
+  background: var(--radio-smoke);
+}
+
+.progress-current {
+  background: var(--radio-progress-bar);
+}
+
+/* Lista de Programas */
+.program-card {
+  background: var(--radio-surface);
+  border-left: 4px solid var(--radio-gold);
+}
+
+.program-card:hover {
+  box-shadow: var(--radio-shadow);
+}
+
+/* Estados del Reproductor */
+.playing .status-indicator {
+  background: var(--radio-playing);
+}
+
+.paused .status-indicator {
+  background: var(--radio-paused);
+}
