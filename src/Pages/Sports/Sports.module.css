@@ -1,0 +1,588 @@
+.sports {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--radio-background) 0%, var(--radio-surface) 100%);
+    padding: 2rem 1rem;
+}
+
+/* Header */
+.sportsHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.title {
+    color: var(--radio-charcoal);
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--radio-text-secondary);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Filtros de Deportes */
+.sportsFilter {
+    margin-bottom: 3rem;
+}
+
+.filterContainer {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--radio-white);
+    border: 2px solid var(--radio-smoke);
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.filterButton:hover {
+    border-color: var(--radio-gold);
+    transform: translateY(-2px);
+}
+
+.filterButton.active {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    border-color: var(--radio-gold);
+    font-weight: var(--font-weight-bold);
+}
+
+.filterIcon {
+    font-size: 1.2rem;
+}
+
+/* Contenido Principal */
+.sportsContent {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Secciones */
+.featuredSection,
+.newsSection,
+.leaguesSection,
+.statsSection,
+.eventsSection {
+    background: var(--radio-white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--radio-shadow);
+    margin-bottom: 2rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--radio-charcoal);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.titleIcon {
+    font-size: 1.3rem;
+}
+
+.sectionCount {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+}
+
+/* Grid de Partidos */
+.matchesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.matchCard {
+    background: var(--radio-surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.matchCard:hover {
+    border-color: var(--radio-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--radio-shadow);
+}
+
+.matchHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.matchLeague {
+    background: var(--radio-charcoal);
+    color: var(--radio-white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+}
+
+.matchStatus {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+}
+
+.matchStatus.live {
+    background: rgba(76, 175, 80, 0.1);
+    color: var(--radio-playing);
+    border: 1px solid var(--radio-playing);
+}
+
+.matchStatus.finished {
+    background: rgba(158, 158, 158, 0.1);
+    color: var(--radio-text-secondary);
+    border: 1px solid var(--radio-text-secondary);
+}
+
+.matchStatus.upcoming {
+    background: rgba(255, 152, 0, 0.1);
+    color: var(--radio-paused);
+    border: 1px solid var(--radio-paused);
+}
+
+.liveDot {
+    width: 6px;
+    height: 6px;
+    background: var(--radio-playing);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* Equipos */
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.teamLogo {
+    font-size: 2rem;
+}
+
+.teamName {
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.teamScore {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-charcoal);
+}
+
+.vs {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.8rem;
+}
+
+.matchFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.matchDate {
+    color: var(--radio-text-secondary);
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-medium);
+}
+
+.actionButton {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actionButton:hover {
+    background: var(--radio-hover);
+    transform: translateY(-1px);
+}
+
+/* Noticias */
+.newsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.newsCard {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--radio-surface);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.newsCard:hover {
+    border-left-color: var(--radio-gold);
+    transform: translateX(4px);
+}
+
+.newsImage {
+    font-size: 3rem;
+    background: var(--radio-white);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 2px solid var(--radio-gold);
+    flex-shrink: 0;
+}
+
+.newsContent {
+    flex: 1;
+}
+
+.newsMeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.newsCategory {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.newsDate {
+    color: var(--radio-text-secondary);
+    font-size: 0.7rem;
+}
+
+.newsTitle {
+    color: var(--radio-charcoal);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.newsExcerpt {
+    color: var(--radio-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.readMore {
+    background: none;
+    border: none;
+    color: var(--radio-gold);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.readMore:hover {
+    color: var(--radio-hover);
+    transform: translateX(4px);
+}
+
+/* Sidebar */
+.sidebarTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--radio-charcoal);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1rem;
+}
+
+/* Ligas */
+.leaguesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.leagueItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.leagueItem:hover {
+    background: var(--radio-white);
+    box-shadow: var(--radio-shadow);
+}
+
+.leagueInfo {
+    flex: 1;
+}
+
+.leagueName {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.2rem;
+    color: var(--radio-charcoal);
+}
+
+.leagueCountry {
+    font-size: 0.8rem;
+    color: var(--radio-text-secondary);
+}
+
+.leagueStats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.matchesCount {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-gold);
+}
+
+.matchesLabel {
+    font-size: 0.7rem;
+    color: var(--radio-text-secondary);
+    text-transform: uppercase;
+}
+
+/* Estadísticas */
+.statsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.statCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.statValue {
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-gold);
+    margin-bottom: 0.3rem;
+}
+
+.statLabel {
+    font-size: 0.7rem;
+    color: var(--radio-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Eventos */
+.eventsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.eventItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.eventItem:hover {
+    background: var(--radio-white);
+    box-shadow: var(--radio-shadow);
+}
+
+.eventTime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.5rem;
+    border-radius: 6px;
+    min-width: 50px;
+}
+
+.eventTime span:first-child {
+    font-weight: var(--font-weight-bold);
+    font-size: 0.9rem;
+}
+
+.eventTime span:last-child {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+}
+
+.eventInfo {
+    flex: 1;
+}
+
+.eventSport {
+    font-size: 0.7rem;
+    color: var(--radio-text-secondary);
+    margin-bottom: 0.2rem;
+    display: block;
+}
+
+.eventName {
+    font-weight: var(--font-weight-semibold);
+    color: var(--radio-charcoal);
+    font-size: 0.9rem;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .sportsContent {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .filterContainer {
+        gap: 0.5rem;
+    }
+    
+    .filterButton {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .matchesGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .newsCard {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .newsMeta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .sports {
+        padding: 1rem 0.5rem;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .featuredSection,
+    .newsSection,
+    .leaguesSection,
+    .statsSection,
+    .eventsSection {
+        padding: 1.5rem;
+    }
+    
+    .teams {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .team {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+}
