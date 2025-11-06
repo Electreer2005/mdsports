@@ -1,0 +1,597 @@
+.live {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--radio-background) 0%, var(--radio-surface) 100%);
+    padding: 2rem 1rem;
+}
+
+/* Header de Transmisión */
+.liveHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.liveBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--radio-playing);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.liveDot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.liveTitle {
+    color: var(--radio-charcoal);
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1rem;
+}
+
+.listenersCount {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.listenersIcon {
+    font-size: 1.1rem;
+}
+
+/* Contenido Principal */
+.liveContent {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Columna Principal */
+.mainColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Programa Actual */
+.currentProgram {
+    background: var(--radio-white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--radio-shadow-strong);
+    border: 2px solid var(--radio-gold);
+}
+
+.programHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.programImage {
+    font-size: 4rem;
+    background: var(--radio-surface);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--radio-gold);
+}
+
+.programInfo {
+    flex: 1;
+}
+
+.programCategory {
+    background: var(--radio-charcoal);
+    color: var(--radio-white);
+    padding: 0.3rem 1rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+}
+
+.programTitle {
+    color: var(--radio-charcoal);
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0.5rem 0;
+    line-height: 1.2;
+}
+
+.programHost {
+    color: var(--radio-text-secondary);
+    font-size: 1rem;
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+}
+
+.programDescription {
+    color: var(--radio-text-primary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.programSchedule {
+    text-align: center;
+}
+
+.scheduleTime {
+    background: var(--radio-surface);
+    color: var(--radio-text-secondary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: var(--font-weight-semibold);
+    font-size: 0.9rem;
+}
+
+/* Reproductor de Audio */
+.audioPlayer {
+    background: var(--radio-charcoal);
+    color: var(--radio-white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--radio-shadow-strong);
+}
+
+.playerControls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 2rem;
+}
+
+.playButton {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: var(--font-weight-bold);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+}
+
+.playButton:hover {
+    background: var(--radio-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--radio-glow);
+}
+
+.playButton.playing {
+    background: var(--radio-playing);
+    color: white;
+}
+
+.buttonIcon {
+    font-size: 1.3rem;
+}
+
+.volumeControl {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    max-width: 300px;
+}
+
+.volumeIcon {
+    font-size: 1.2rem;
+}
+
+.volumeSlider {
+    flex: 1;
+    height: 6px;
+    background: var(--radio-smoke);
+    border-radius: 3px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.volumeSlider:hover {
+    opacity: 1;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--radio-gold);
+    cursor: pointer;
+}
+
+.volumeValue {
+    min-width: 40px;
+    text-align: center;
+    font-weight: var(--font-weight-semibold);
+}
+
+.playerStatus {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.status {
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.status.live {
+    background: rgba(76, 175, 80, 0.2);
+    color: var(--radio-playing);
+    border: 1px solid var(--radio-playing);
+}
+
+.status.idle {
+    background: rgba(255, 152, 0, 0.2);
+    color: var(--radio-paused);
+    border: 1px solid var(--radio-paused);
+}
+
+.bufferIndicator {
+    width: 100%;
+    height: 4px;
+    background: var(--radio-smoke);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.bufferBar {
+    height: 100%;
+    background: var(--radio-gold);
+    animation: bufferAnimation 2s infinite linear;
+}
+
+@keyframes bufferAnimation {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Acciones Rápidas */
+.quickActions {
+    background: var(--radio-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--radio-shadow);
+}
+
+.actionsTitle {
+    color: var(--radio-charcoal);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.actionsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.actionButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    background: var(--radio-surface);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: var(--font-weight-medium);
+}
+
+.actionButton:hover {
+    background: var(--radio-white);
+    border-color: var(--radio-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--radio-shadow);
+}
+
+.actionIcon {
+    font-size: 2rem;
+}
+
+.actionLabel {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.sidebarTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--radio-charcoal);
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1rem;
+}
+
+.titleIcon {
+    font-size: 1.2rem;
+}
+
+/* Próximas Transmisiones */
+.upcomingSection,
+.statsSection,
+.techInfo {
+    background: var(--radio-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--radio-shadow);
+}
+
+.upcomingList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.upcomingItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.upcomingItem:hover {
+    border-left-color: var(--radio-gold);
+    transform: translateX(4px);
+}
+
+.upcomingInfo {
+    flex: 1;
+}
+
+.upcomingTitle {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.3rem;
+    color: var(--radio-charcoal);
+    font-size: 0.95rem;
+}
+
+.upcomingHost {
+    font-size: 0.8rem;
+    color: var(--radio-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.upcomingMeta {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.upcomingSport,
+.upcomingType {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.upcomingType {
+    background: var(--radio-charcoal);
+    color: var(--radio-white);
+}
+
+.upcomingTime {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+    white-space: nowrap;
+}
+
+/* Estadísticas */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-gold);
+    margin-bottom: 0.3rem;
+}
+
+.statLabel {
+    font-size: 0.8rem;
+    color: var(--radio-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Información Técnica */
+.techList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.techItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    background: var(--radio-surface);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.techItem span:first-child {
+    font-weight: var(--font-weight-medium);
+    color: var(--radio-text-secondary);
+}
+
+.techItem span:last-child {
+    font-weight: var(--font-weight-semibold);
+    color: var(--radio-charcoal);
+}
+
+.statusOnline {
+    color: var(--radio-playing) !important;
+}
+
+/* Notificación de Calidad */
+.qualityNotification {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.qualityInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    font-weight: var(--font-weight-medium);
+}
+
+.qualityIcon {
+    font-size: 1.2rem;
+}
+
+/* Animaciones */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .liveContent {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .sidebar {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .liveTitle {
+        font-size: 2rem;
+    }
+    
+    .programHeader {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .programImage {
+        align-self: center;
+    }
+    
+    .playerControls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .volumeControl {
+        max-width: none;
+        width: 100%;
+    }
+    
+    .actionsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .live {
+        padding: 1rem 0.5rem;
+    }
+    
+    .liveTitle {
+        font-size: 1.5rem;
+    }
+    
+    .currentProgram,
+    .audioPlayer {
+        padding: 1.5rem;
+    }
+    
+    .programTitle {
+        font-size: 1.4rem;
+    }
+    
+    .playButton {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
