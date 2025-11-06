@@ -1,0 +1,528 @@
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--radio-charcoal);
+  border-top: 2px solid var(--radio-gold);
+  color: var(--radio-white);
+  box-shadow: var(--radio-shadow-strong);
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* === MINI PLAYER === */
+.miniPlayer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.2rem;
+  background: var(--radio-charcoal);
+  color: var(--radio-white);
+}
+
+.trackInfoMini {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+  flex: 1;
+}
+
+.coverArtMini {
+  font-size: 1.8rem;
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trackTitleMini {
+  font-weight: var(--font-weight-semibold);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackArtistMini {
+  font-size: 0.8rem;
+  color: var(--radio-smoke);
+}
+
+.controlsMini {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.playButtonMini {
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.playButtonMini:hover {
+  background: var(--radio-hover);
+  transform: scale(1.1);
+}
+
+.expandButton {
+  background: transparent;
+  border: 1px solid var(--radio-gold);
+  color: var(--radio-gold);
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.expandButton:hover {
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+}
+
+.errorIndicator {
+  font-size: 1.3rem;
+  color: var(--radio-error);
+  margin-left: 0.5rem;
+}
+
+/* === EXPANDED PLAYER === */
+.expandedPlayer {
+  background: linear-gradient(145deg, var(--radio-charcoal) 0%, #1e1e1e 100%);
+  color: var(--radio-white);
+  height: 480px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 40px rgba(255, 215, 0, 0.08);
+  animation: fadeIn 0.3s ease;
+}
+
+/* === HEADER === */
+.playerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.liveBadge {
+  background: var(--radio-playing);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: pulse 2s infinite;
+  text-transform: uppercase;
+}
+
+.listenersCount {
+  font-size: 0.8rem;
+  color: var(--radio-smoke);
+  margin-left: 1rem;
+}
+
+.qualityButton {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid var(--radio-gold);
+  color: var(--radio-gold);
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.qualityButton:hover {
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+}
+
+.closeButton {
+  background: transparent;
+  border: 1px solid var(--radio-smoke);
+  color: var(--radio-white);
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  border-color: var(--radio-gold);
+  color: var(--radio-gold);
+}
+
+/* === ERROR === */
+.errorMessage {
+  background: rgba(244, 67, 54, 0.15);
+  color: var(--radio-error);
+  border-left: 3px solid var(--radio-error);
+  padding: 0.8rem 1.2rem;
+  margin: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.retryButton {
+  background: var(--radio-error);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.3s ease;
+}
+
+.retryButton:hover {
+  background: #d32f2f;
+}
+
+/* === STREAM SELECTOR === */
+.streamSelector {
+  padding: 1rem 1.5rem 0.5rem;
+}
+
+.streamSelectorTitle {
+  color: var(--radio-gold);
+  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.streamButtons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.streamButton {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--radio-white);
+  border: 1px solid transparent;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.streamButton:hover {
+  border-color: var(--radio-gold);
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--radio-gold);
+}
+
+.streamButton.active {
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* === TRACK INFO === */
+.trackSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+}
+
+.coverImage {
+  font-size: 4rem;
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--radio-shadow-strong);
+}
+
+.trackInfo {
+  flex: 1;
+}
+
+.trackTitle {
+  font-size: 1.5rem;
+  color: var(--radio-gold);
+  font-weight: var(--font-weight-bold);
+}
+
+.trackArtist {
+  color: var(--radio-white);
+  opacity: 0.9;
+  margin-bottom: 0.4rem;
+}
+
+.trackMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.trackMeta span {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.8rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  color: var(--radio-smoke);
+}
+
+/* === CONEXIÓN === */
+.connectionStatus {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.connecting {
+  color: var(--radio-gold);
+}
+
+.connected {
+  color: var(--radio-playing);
+}
+
+.disconnected {
+  color: var(--radio-paused);
+}
+
+/* === LIKE === */
+.trackActions {
+  display: flex;
+  align-items: center;
+}
+
+.likeButton {
+  background: transparent;
+  border: none;
+  color: var(--radio-white);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.likeButton:hover {
+  transform: scale(1.1);
+  color: var(--radio-gold);
+}
+
+.liked {
+  color: var(--radio-gold);
+}
+
+/* === CONTROLES === */
+.controlsSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.6rem;
+}
+
+.modeButton, .seekButton {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--radio-white);
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modeButton:hover,
+.seekButton:hover {
+  border-color: var(--radio-gold);
+  color: var(--radio-gold);
+}
+
+.modeButton.active {
+  color: var(--radio-gold);
+  border-color: var(--radio-gold);
+}
+
+.mainPlayButton {
+  background: var(--radio-gold);
+  color: var(--radio-charcoal);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.4);
+}
+
+.mainPlayButton:hover {
+  background: var(--radio-hover);
+  transform: scale(1.05);
+}
+
+/* === PROGRESO === */
+.progressSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.5rem;
+}
+
+.progressBar {
+  flex: 1;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  position: relative;
+}
+
+.liveProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.liveIndicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--radio-gold);
+  animation: blink 1.5s infinite;
+}
+
+/* === VOLUMEN === */
+.volumeSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.volumeButton {
+  background: transparent;
+  border: none;
+  color: var(--radio-white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volumeButton:hover {
+  color: var(--radio-gold);
+}
+
+.volumeSliderContainer {
+  position: relative;
+  width: 120px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.volumeSlider {
+  width: 100%;
+  appearance: none;
+  height: 4px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: var(--radio-gold);
+  border-radius: 50%;
+}
+
+.volumeLevel {
+  position: absolute;
+  height: 100%;
+  background: var(--radio-gold);
+  border-radius: 2px;
+}
+
+.volumePercentage {
+  font-size: 0.8rem;
+  color: var(--radio-smoke);
+}
+
+/* === ANIMACIONES === */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .expandedPlayer {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .trackSection {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .coverImage {
+    width: 100px;
+    height: 100px;
+    font-size: 3rem;
+  }
+
+  .controlsSection {
+    gap: 1rem;
+  }
+
+  .mainPlayButton {
+    width: 60px;
+    height: 60px;
+  }
+}
