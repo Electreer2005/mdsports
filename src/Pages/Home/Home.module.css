@@ -1,0 +1,468 @@
+.home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--radio-background) 0%, var(--radio-surface) 100%);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--radio-charcoal) 0%, #1a1a1a 100%);
+    color: var(--radio-white);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--radio-gold);
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.heroTitle {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.highlight {
+    color: var(--radio-gold);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.heroSubtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-weight: var(--font-weight-medium);
+}
+
+.heroStats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statNumber {
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-gold);
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Live Match Section */
+.liveMatchSection {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--radio-charcoal);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.liveIndicator {
+    width: 12px;
+    height: 12px;
+    background: var(--radio-playing);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.matchLeague {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.matchCard {
+    background: var(--radio-white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--radio-shadow-strong);
+    border: 2px solid var(--radio-gold);
+}
+
+.teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.teamLogo {
+    font-size: 2.5rem;
+}
+
+.teamName {
+    font-weight: var(--font-weight-semibold);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.teamScore {
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-charcoal);
+}
+
+.matchInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.matchTime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.minute {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--radio-playing);
+}
+
+.matchStatus {
+    font-size: 0.8rem;
+    color: var(--radio-text-secondary);
+    text-transform: uppercase;
+}
+
+.vs {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.9rem;
+}
+
+.matchCommentary {
+    background: var(--radio-surface);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    border-left: 3px solid var(--radio-gold);
+}
+
+.listenButton {
+    background: var(--radio-playing);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: var(--font-weight-bold);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.listenButton:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Content Grid */
+.contentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.gridSection {
+    background: var(--radio-white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--radio-shadow);
+}
+
+.gridTitle {
+    color: var(--radio-charcoal);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--radio-gold);
+    padding-bottom: 0.5rem;
+}
+
+/* Matches List */
+.matchesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.upcomingMatch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.upcomingMatch:hover {
+    border-left-color: var(--radio-gold);
+    transform: translateX(4px);
+}
+
+.matchDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.matchTeams {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.2rem;
+}
+
+.matchLeague {
+    font-size: 0.8rem;
+    color: var(--radio-text-secondary);
+}
+
+.matchDate {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
+}
+
+/* Programs List */
+.programsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.programCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--radio-surface);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.programCard:hover {
+    background: var(--radio-white);
+    box-shadow: var(--radio-shadow);
+}
+
+.programInfo {
+    flex: 1;
+}
+
+.programName {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 0.2rem;
+    color: var(--radio-charcoal);
+}
+
+.programHost {
+    font-size: 0.8rem;
+    color: var(--radio-text-secondary);
+    margin: 0;
+}
+
+.programMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.3rem;
+}
+
+.programTime {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.2rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.programListeners {
+    font-size: 0.7rem;
+    color: var(--radio-text-secondary);
+}
+
+/* Actions Grid */
+.actionsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.actionButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    background: var(--radio-surface);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: var(--font-weight-medium);
+}
+
+.actionButton:hover {
+    background: var(--radio-white);
+    border-color: var(--radio-gold);
+    transform: translateY(-2px);
+}
+
+.actionIcon {
+    font-size: 1.5rem;
+}
+
+/* News Ticker */
+.newsTicker {
+    background: var(--radio-charcoal);
+    color: var(--radio-white);
+    padding: 1rem;
+    margin-top: 3rem;
+    border-top: 2px solid var(--radio-gold);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.tickerLabel {
+    background: var(--radio-gold);
+    color: var(--radio-charcoal);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-weight: var(--font-weight-bold);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.tickerContent {
+    flex: 1;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+    
+    .heroStats {
+        gap: 1.5rem;
+    }
+    
+    .teams {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .team {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .contentGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actionsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sectionHeader {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+    
+    .heroTitle {
+        font-size: 2rem;
+    }
+    
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+    
+    .statNumber {
+        font-size: 1.5rem;
+    }
+    
+    .matchCard {
+        padding: 1rem;
+    }
+}
