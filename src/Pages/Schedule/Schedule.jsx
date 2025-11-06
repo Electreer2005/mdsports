@@ -1,430 +1,592 @@
 import { useState, useEffect } from 'react';
-import styles from './Programs.module.css';
+import styles from './Schedule.module.css';
 
-export default function Programs() {
-    const [activeFilter, setActiveFilter] = useState('todos');
-    const [programs, setPrograms] = useState([]);
-    const [livePrograms, setLivePrograms] = useState([]);
-    const [featuredHosts, setFeaturedHosts] = useState([]);
-
-    const filters = [
-        { id: 'todos', name: 'Todos los Programas', icon: '📻' },
-        { id: 'en-vivo', name: 'En Vivo', icon: '🔴' },
-        { id: 'futbol', name: 'Fútbol', icon: '⚽' },
-        { id: 'basquet', name: 'Básquet', icon: '🏀' },
-        { id: 'analisis', name: 'Análisis', icon: '📊' },
-        { id: 'entrevistas', name: 'Entrevistas', icon: '🎤' },
-        { id: 'deportes', name: 'Otros Deportes', icon: '🏆' }
-    ];
+export default function Schedule() {
+    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [viewMode, setViewMode] = useState('dia'); // 'dia', 'semana', 'mes'
+    const [schedule, setSchedule] = useState([]);
+    const [featuredEvents, setFeaturedEvents] = useState([]);
 
     // Datos de ejemplo
     useEffect(() => {
-        // Programas principales
-        setPrograms([
+        // Eventos destacados
+        setFeaturedEvents([
             {
                 id: 1,
-                name: "Titulares Deportivos",
-                description: "Las noticias más importantes del mundo deportivo, actualizadas minuto a minuto.",
-                schedule: "Lunes a Viernes 07:00 - 09:00",
-                hosts: ["Carlos Ruiz", "Ana Martínez"],
-                category: "noticias",
-                image: "📰",
-                isLive: true,
-                listeners: "2.4K",
-                nextAir: "Hoy 07:00"
+                title: "Clásico Nacional",
+                description: "Boca Juniors vs River Plate - Liga Profesional",
+                date: new Date(2024, 0, 15, 21, 0),
+                sport: "futbol",
+                importance: "alta",
+                broadcast: true,
+                location: "Estadio Monumental"
             },
             {
                 id: 2,
-                name: "La Tribuna",
-                description: "Análisis profundo y debates apasionantes sobre fútbol nacional e internacional.",
-                schedule: "Lunes, Miércoles, Viernes 18:00 - 20:00",
-                hosts: ["Roberto Díaz", "María Lopez"],
-                category: "futbol",
-                image: "⚽",
-                isLive: false,
-                listeners: "3.1K",
-                nextAir: "Hoy 18:00"
+                title: "Final NBA",
+                description: "Lakers vs Warriors - Playoffs",
+                date: new Date(2024, 0, 16, 20, 30),
+                sport: "basquet",
+                importance: "alta",
+                broadcast: true,
+                location: "Staples Center"
             },
             {
                 id: 3,
-                name: "Zona de Juego",
-                description: "Cobertura completa de la NBA y baloncesto europeo con expertos en la materia.",
-                schedule: "Martes y Jueves 16:00 - 17:30",
-                hosts: ["Pedro Gómez"],
-                category: "basquet",
-                image: "🏀",
-                isLive: false,
-                listeners: "1.8K",
-                nextAir: "Mañana 16:00"
+                title: "Gran Premio de Brasil",
+                description: "Fórmula 1 - Carrera Principal",
+                date: new Date(2024, 0, 17, 16, 0),
+                sport: "motor",
+                importance: "media",
+                broadcast: true,
+                location: "Interlagos"
+            }
+        ]);
+
+        // Programación completa
+        setSchedule([
+            {
+                id: 1,
+                title: "Titulares Deportivos",
+                type: "programa",
+                start: new Date(2024, 0, 15, 7, 0),
+                end: new Date(2024, 0, 15, 9, 0),
+                sport: "general",
+                hosts: ["Carlos Ruiz", "Ana Martínez"],
+                isLive: true
+            },
+            {
+                id: 2,
+                title: "Boca vs River",
+                type: "partido",
+                start: new Date(2024, 0, 15, 21, 0),
+                end: new Date(2024, 0, 15, 23, 0),
+                sport: "futbol",
+                league: "Liga Profesional",
+                isLive: true
+            },
+            {
+                id: 3,
+                title: "La Tribuna",
+                type: "programa",
+                start: new Date(2024, 0, 15, 18, 0),
+                end: new Date(2024, 0, 15, 20, 0),
+                sport: "futbol",
+                hosts: ["Roberto Díaz", "María Lopez"],
+                isLive: false
             },
             {
                 id: 4,
-                name: "Marcador Final",
-                description: "Resúmenes y análisis post-partido con los momentos más destacados.",
-                schedule: "Todos los días 22:00 - 23:00",
-                hosts: ["Laura Fernandez", "Javier Mendez"],
-                category: "analisis",
-                image: "📋",
-                isLive: false,
-                listeners: "2.2K",
-                nextAir: "Hoy 22:00"
+                title: "Zona de Juego",
+                type: "programa",
+                start: new Date(2024, 0, 16, 16, 0),
+                end: new Date(2024, 0, 16, 17, 30),
+                sport: "basquet",
+                hosts: ["Pedro Gómez"],
+                isLive: false
             },
             {
                 id: 5,
-                name: "Deporte Total",
-                description: "Cobertura de todos los deportes: tenis, motor, béisbol y más.",
-                schedule: "Sábados y Domingos 10:00 - 12:00",
-                hosts: ["Sofia Castro"],
-                category: "deportes",
-                image: "🏆",
-                isLive: false,
-                listeners: "1.5K",
-                nextAir: "Sábado 10:00"
+                title: "Lakers vs Warriors",
+                type: "partido",
+                start: new Date(2024, 0, 16, 20, 30),
+                end: new Date(2024, 0, 16, 23, 0),
+                sport: "basquet",
+                league: "NBA",
+                isLive: true
             },
             {
                 id: 6,
-                name: "Voces del Deporte",
-                description: "Entrevistas exclusivas con las grandes figuras del deporte mundial.",
-                schedule: "Viernes 21:00 - 22:30",
-                hosts: ["Ricardo Torres"],
-                category: "entrevistas",
-                image: "🎤",
-                isLive: false,
-                listeners: "2.8K",
-                nextAir: "Viernes 21:00"
-            }
-        ]);
-
-        // Programas en vivo
-        setLivePrograms([
-            {
-                id: 1,
-                name: "Transmisión Especial",
-                description: "Seguimiento minuto a minuto del clásico nacional",
-                hosts: ["Carlos Ruiz"],
-                listeners: "4.2K",
-                progress: 65
-            }
-        ]);
-
-        // Locutores destacados
-        setFeaturedHosts([
-            {
-                id: 1,
-                name: "Carlos Ruiz",
-                role: "Director Deportivo",
-                experience: "15 años",
-                specialty: "Fútbol Internacional",
-                image: "👨‍💼",
-                programs: ["Titulares Deportivos", "Transmisiones Especiales"]
+                title: "Marcador Final",
+                type: "programa",
+                start: new Date(2024, 0, 15, 22, 0),
+                end: new Date(2024, 0, 15, 23, 0),
+                sport: "general",
+                hosts: ["Laura Fernandez"],
+                isLive: false
             },
             {
-                id: 2,
-                name: "Ana Martínez",
-                role: "Periodista Deportiva",
-                experience: "10 años",
-                specialty: "Análisis Táctico",
-                image: "👩‍💼",
-                programs: ["Titulares Deportivos", "La Tribuna"]
-            },
-            {
-                id: 3,
-                name: "Roberto Díaz",
-                role: "Comentarista",
-                experience: "12 años",
-                specialty: "Fútbol Nacional",
-                image: "🎙️",
-                programs: ["La Tribuna", "Marcador Final"]
+                id: 7,
+                title: "Gran Premio de Brasil",
+                type: "evento",
+                start: new Date(2024, 0, 17, 16, 0),
+                end: new Date(2024, 0, 17, 18, 0),
+                sport: "motor",
+                category: "Fórmula 1",
+                isLive: true
             }
         ]);
     }, []);
 
-    const filteredPrograms = programs.filter(program => {
-        if (activeFilter === 'todos') return true;
-        if (activeFilter === 'en-vivo') return program.isLive;
-        return program.category === activeFilter;
-    });
-
-    const getCategoryColor = (category) => {
-        const colors = {
-            'noticias': '#2196F3',
-            'futbol': '#4CAF50',
-            'basquet': '#FF9800',
-            'analisis': '#9C27B0',
-            'entrevistas': '#F44336',
-            'deportes': '#795548'
-        };
-        return colors[category] || '#607D8B';
+    // Funciones para manejar fechas
+    const formatDate = (date) => {
+        return date.toLocaleDateString('es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
     };
 
+    const formatTime = (date) => {
+        return date.toLocaleTimeString('es-ES', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    };
+
+    const getDayEvents = (date) => {
+        return schedule.filter(event => {
+            const eventDate = new Date(event.start);
+            return eventDate.toDateString() === date.toDateString();
+        }).sort((a, b) => new Date(a.start) - new Date(b.start));
+    };
+
+    const getWeekDates = () => {
+        const dates = [];
+        const startOfWeek = new Date(selectedDate);
+        startOfWeek.setDate(selectedDate.getDate() - selectedDate.getDay());
+        
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(startOfWeek);
+            date.setDate(startOfWeek.getDate() + i);
+            dates.push(date);
+        }
+        return dates;
+    };
+
+    const navigateDate = (direction) => {
+        const newDate = new Date(selectedDate);
+        if (viewMode === 'dia') {
+            newDate.setDate(selectedDate.getDate() + direction);
+        } else if (viewMode === 'semana') {
+            newDate.setDate(selectedDate.getDate() + (direction * 7));
+        } else {
+            newDate.setMonth(selectedDate.getMonth() + direction);
+        }
+        setSelectedDate(newDate);
+    };
+
+    const getSportIcon = (sport) => {
+        const icons = {
+            futbol: '⚽',
+            basquet: '🏀',
+            tenis: '🎾',
+            motor: '🏎️',
+            general: '📻',
+            beisbol: '⚾',
+            atletismo: '🏃'
+        };
+        return icons[sport] || '🏆';
+    };
+
+    const getEventTypeColor = (type) => {
+        const colors = {
+            programa: '#2196F3',
+            partido: '#4CAF50',
+            evento: '#FF9800'
+        };
+        return colors[type] || '#9C27B0';
+    };
+
+    const dayEvents = getDayEvents(selectedDate);
+    const weekDates = getWeekDates();
+
     return (
-        <section className={styles.programs}>
+        <section className={styles.schedule}>
             {/* Header */}
-            <div className={styles.programsHeader}>
-                <h1 className={styles.title}>Programas Deportivos</h1>
+            <div className={styles.scheduleHeader}>
+                <h1 className={styles.title}>Calendario Deportivo</h1>
                 <p className={styles.subtitle}>
-                    Los mejores programas, análisis y comentarios del mundo deportivo
+                    No te pierdas ningún evento. Toda la programación en un solo lugar.
                 </p>
             </div>
 
-            {/* Filtros */}
-            <div className={styles.filtersSection}>
-                <div className={styles.filtersContainer}>
-                    {filters.map(filter => (
-                        <button
-                            key={filter.id}
-                            className={`${styles.filterButton} ${activeFilter === filter.id ? styles.active : ''}`}
-                            onClick={() => setActiveFilter(filter.id)}
-                        >
-                            <span className={styles.filterIcon}>{filter.icon}</span>
-                            {filter.name}
-                        </button>
+            {/* Controles de Navegación */}
+            <div className={styles.controlsSection}>
+                <div className={styles.viewControls}>
+                    <button 
+                        className={`${styles.viewButton} ${viewMode === 'dia' ? styles.active : ''}`}
+                        onClick={() => setViewMode('dia')}
+                    >
+                        📅 Día
+                    </button>
+                    <button 
+                        className={`${styles.viewButton} ${viewMode === 'semana' ? styles.active : ''}`}
+                        onClick={() => setViewMode('semana')}
+                    >
+                        📆 Semana
+                    </button>
+                    <button 
+                        className={`${styles.viewButton} ${viewMode === 'mes' ? styles.active : ''}`}
+                        onClick={() => setViewMode('mes')}
+                    >
+                        🗓️ Mes
+                    </button>
+                </div>
+
+                <div className={styles.dateControls}>
+                    <button 
+                        className={styles.navButton}
+                        onClick={() => navigateDate(-1)}
+                    >
+                        ◀️
+                    </button>
+                    
+                    <div className={styles.currentDate}>
+                        <span className={styles.dateDisplay}>
+                            {formatDate(selectedDate)}
+                        </span>
+                    </div>
+                    
+                    <button 
+                        className={styles.navButton}
+                        onClick={() => navigateDate(1)}
+                    >
+                        ▶️
+                    </button>
+                    
+                    <button 
+                        className={styles.todayButton}
+                        onClick={() => setSelectedDate(new Date())}
+                    >
+                        Hoy
+                    </button>
+                </div>
+            </div>
+
+            {/* Eventos Destacados */}
+            <div className={styles.featuredSection}>
+                <h2 className={styles.sectionTitle}>
+                    <span className={styles.titleIcon}>🔥</span>
+                    Eventos Destacados
+                </h2>
+                <div className={styles.featuredGrid}>
+                    {featuredEvents.map(event => (
+                        <div key={event.id} className={styles.featuredCard}>
+                            <div className={styles.featuredHeader}>
+                                <span className={styles.sportIcon}>
+                                    {getSportIcon(event.sport)}
+                                </span>
+                                <div className={styles.featuredInfo}>
+                                    <h3 className={styles.featuredTitle}>
+                                        {event.title}
+                                    </h3>
+                                    <p className={styles.featuredDescription}>
+                                        {event.description}
+                                    </p>
+                                </div>
+                                {event.broadcast && (
+                                    <span className={styles.broadcastBadge}>
+                                        📡 EN VIVO
+                                    </span>
+                                )}
+                            </div>
+                            
+                            <div className={styles.featuredDetails}>
+                                <div className={styles.eventTime}>
+                                    <span className={styles.timeIcon}>⏰</span>
+                                    <span>{formatTime(event.date)}</span>
+                                </div>
+                                <div className={styles.eventLocation}>
+                                    <span className={styles.locationIcon}>📍</span>
+                                    <span>{event.location}</span>
+                                </div>
+                            </div>
+                            
+                            <div className={styles.featuredActions}>
+                                <button className={styles.reminderButton}>
+                                    ⏰ Recordarme
+                                </button>
+                                <button className={styles.listenButton}>
+                                    🎧 Escuchar
+                                </button>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </div>
 
-            {/* Contenido Principal */}
-            <div className={styles.programsContent}>
-                {/* Columna Principal */}
-                <div className={styles.mainColumn}>
-                    {/* Programas en Vivo */}
-                    {livePrograms.length > 0 && (
-                        <div className={styles.liveSection}>
-                            <div className={styles.sectionHeader}>
-                                <h2 className={styles.sectionTitle}>
-                                    <span className={styles.liveIndicator}></span>
-                                    Transmitiendo Ahora
-                                </h2>
+            {/* Vista Principal */}
+            <div className={styles.mainContent}>
+                {/* Vista Día */}
+                {viewMode === 'dia' && (
+                    <div className={styles.dayView}>
+                        <div className={styles.dayHeader}>
+                            <h3 className={styles.dayTitle}>
+                                Programación del {formatDate(selectedDate)}
+                            </h3>
+                            <span className={styles.eventsCount}>
+                                {dayEvents.length} eventos
+                            </span>
+                        </div>
+
+                        {dayEvents.length === 0 ? (
+                            <div className={styles.noEvents}>
+                                <span className={styles.noEventsIcon}>📅</span>
+                                <h4>No hay eventos programados para este día</h4>
+                                <p>Revisa otros días o la programación semanal</p>
                             </div>
-                            <div className={styles.livePrograms}>
-                                {livePrograms.map(program => (
-                                    <div key={program.id} className={styles.liveProgramCard}>
-                                        <div className={styles.liveProgramHeader}>
-                                            <div className={styles.liveProgramInfo}>
-                                                <h3 className={styles.liveProgramName}>
-                                                    {program.name}
-                                                </h3>
-                                                <p className={styles.liveProgramDescription}>
-                                                    {program.description}
-                                                </p>
-                                                <div className={styles.liveProgramMeta}>
-                                                    <span className={styles.liveProgramHosts}>
-                                                        Con {program.hosts.join(', ')}
+                        ) : (
+                            <div className={styles.timeline}>
+                                {dayEvents.map(event => (
+                                    <div key={event.id} className={styles.timelineEvent}>
+                                        <div className={styles.eventTimeSlot}>
+                                            <span className={styles.startTime}>
+                                                {formatTime(new Date(event.start))}
+                                            </span>
+                                            <span className={styles.endTime}>
+                                                {formatTime(new Date(event.end))}
+                                            </span>
+                                        </div>
+                                        
+                                        <div 
+                                            className={`${styles.eventCard} ${event.isLive ? styles.live : ''}`}
+                                            style={{ borderLeftColor: getEventTypeColor(event.type) }}
+                                        >
+                                            <div className={styles.eventHeader}>
+                                                <div className={styles.eventType}>
+                                                    <span 
+                                                        className={styles.typeBadge}
+                                                        style={{ backgroundColor: getEventTypeColor(event.type) }}
+                                                    >
+                                                        {event.type.toUpperCase()}
                                                     </span>
-                                                    <span className={styles.liveProgramListeners}>
-                                                        👥 {program.listeners}
-                                                    </span>
+                                                    {event.isLive && (
+                                                        <span className={styles.liveBadge}>
+                                                            🔴 EN VIVO
+                                                        </span>
+                                                    )}
                                                 </div>
+                                                <span className={styles.sportIcon}>
+                                                    {getSportIcon(event.sport)}
+                                                </span>
                                             </div>
-                                            <div className={styles.liveProgramActions}>
-                                                <button className={styles.listenLiveButton}>
-                                                    🎧 ESCUCHAR EN VIVO
+                                            
+                                            <h4 className={styles.eventTitle}>
+                                                {event.title}
+                                            </h4>
+                                            
+                                            <div className={styles.eventDetails}>
+                                                {event.hosts && (
+                                                    <div className={styles.eventHosts}>
+                                                        <span>Con: {event.hosts.join(', ')}</span>
+                                                    </div>
+                                                )}
+                                                {event.league && (
+                                                    <div className={styles.eventLeague}>
+                                                        <span>{event.league}</span>
+                                                    </div>
+                                                )}
+                                                {event.category && (
+                                                    <div className={styles.eventCategory}>
+                                                        <span>{event.category}</span>
+                                                    </div>
+                                                )}
+                                            </div>
+                                            
+                                            <div className={styles.eventActions}>
+                                                <button className={styles.addCalendarButton}>
+                                                    📅 Agendar
                                                 </button>
-                                                <div className={styles.progressBar}>
-                                                    <div 
-                                                        className={styles.progressFill}
-                                                        style={{ width: `${program.progress}%` }}
-                                                    ></div>
-                                                </div>
+                                                {event.isLive && (
+                                                    <button className={styles.listenNowButton}>
+                                                        🎧 Escuchar Ahora
+                                                    </button>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 ))}
                             </div>
+                        )}
+                    </div>
+                )}
+
+                {/* Vista Semana */}
+                {viewMode === 'semana' && (
+                    <div className={styles.weekView}>
+                        <div className={styles.weekHeader}>
+                            <h3>Programación Semanal</h3>
                         </div>
-                    )}
-
-                    {/* Grid de Programas */}
-                    <div className={styles.programsGridSection}>
-                        <div className={styles.sectionHeader}>
-                            <h2 className={styles.sectionTitle}>
-                                <span className={styles.titleIcon}>📻</span>
-                                Todos los Programas
-                                <span className={styles.programsCount}>
-                                    {filteredPrograms.length} programas
-                                </span>
-                            </h2>
-                        </div>
-
-                        <div className={styles.programsGrid}>
-                            {filteredPrograms.map(program => (
-                                <div key={program.id} className={styles.programCard}>
-                                    <div className={styles.programHeader}>
-                                        <div 
-                                            className={styles.programImage}
-                                            style={{ borderColor: getCategoryColor(program.category) }}
-                                        >
-                                            {program.image}
-                                        </div>
-                                        <div className={styles.programBasicInfo}>
-                                            <h3 className={styles.programName}>
-                                                {program.name}
-                                            </h3>
-                                            <div className={styles.programMeta}>
-                                                {program.isLive && (
-                                                    <span className={styles.liveBadge}>
-                                                        🔴 EN VIVO
-                                                    </span>
-                                                )}
-                                                <span className={styles.listeners}>
-                                                    👥 {program.listeners}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <p className={styles.programDescription}>
-                                        {program.description}
-                                    </p>
-
-                                    <div className={styles.programDetails}>
-                                        <div className={styles.programHosts}>
-                                            <span className={styles.detailLabel}>Conductores:</span>
-                                            <span>{program.hosts.join(', ')}</span>
-                                        </div>
-                                        <div className={styles.programSchedule}>
-                                            <span className={styles.detailLabel}>Horario:</span>
-                                            <span>{program.schedule}</span>
-                                        </div>
-                                        <div className={styles.programNext}>
-                                            <span className={styles.detailLabel}>Próxima emisión:</span>
-                                            <span className={styles.nextAir}>
-                                                {program.nextAir}
+                        <div className={styles.weekGrid}>
+                            {weekDates.map((date, index) => {
+                                const dayEvents = getDayEvents(date);
+                                const isToday = date.toDateString() === new Date().toDateString();
+                                const isSelected = date.toDateString() === selectedDate.toDateString();
+                                
+                                return (
+                                    <div 
+                                        key={index} 
+                                        className={`${styles.weekDay} ${isToday ? styles.today : ''} ${isSelected ? styles.selected : ''}`}
+                                        onClick={() => setSelectedDate(date)}
+                                    >
+                                        <div className={styles.dayHeader}>
+                                            <span className={styles.dayName}>
+                                                {date.toLocaleDateString('es-ES', { weekday: 'short' })}
+                                            </span>
+                                            <span className={styles.dayNumber}>
+                                                {date.getDate()}
                                             </span>
                                         </div>
+                                        <div className={styles.dayEvents}>
+                                            {dayEvents.slice(0, 3).map(event => (
+                                                <div 
+                                                    key={event.id} 
+                                                    className={styles.weekEvent}
+                                                    style={{ borderLeftColor: getEventTypeColor(event.type) }}
+                                                >
+                                                    <span className={styles.eventTime}>
+                                                        {formatTime(new Date(event.start))}
+                                                    </span>
+                                                    <span className={styles.eventTitle}>
+                                                        {event.title}
+                                                    </span>
+                                                    {event.isLive && (
+                                                        <span className={styles.liveDot}></span>
+                                                    )}
+                                                </div>
+                                            ))}
+                                            {dayEvents.length > 3 && (
+                                                <div className={styles.moreEvents}>
+                                                    +{dayEvents.length - 3} más
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
 
-                                    <div className={styles.programActions}>
-                                        <button className={styles.scheduleButton}>
-                                            📅 AGENDAR
-                                        </button>
-                                        <button className={styles.listenButton}>
-                                            🎧 ESCUCHAR
-                                        </button>
-                                    </div>
-                                </div>
-                            ))}
+                {/* Vista Mes */}
+                {viewMode === 'mes' && (
+                    <div className={styles.monthView}>
+                        <div className={styles.monthHeader}>
+                            <h3>
+                                {selectedDate.toLocaleDateString('es-ES', { 
+                                    month: 'long', 
+                                    year: 'numeric' 
+                                })}
+                            </h3>
+                        </div>
+                        <div className={styles.calendarGrid}>
+                            {/* Aquí iría la implementación completa del calendario mensual */}
+                            <div className={styles.comingSoon}>
+                                <span className={styles.comingSoonIcon}>🚧</span>
+                                <h4>Vista Mensual en Desarrollo</h4>
+                                <p>Próximamente tendrás una vista completa del calendario mensual</p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* Sidebar de Filtros */}
+            <div className={styles.sidebar}>
+                <div className={styles.filtersSection}>
+                    <h3 className={styles.sidebarTitle}>
+                        <span className={styles.titleIcon}>⚙️</span>
+                        Filtros
+                    </h3>
+                    <div className={styles.filterGroup}>
+                        <h4>Deportes</h4>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>⚽ Fútbol</span>
+                        </label>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>🏀 Básquet</span>
+                        </label>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>🎾 Tenis</span>
+                        </label>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>🏎️ Motor</span>
+                        </label>
+                    </div>
+                    
+                    <div className={styles.filterGroup}>
+                        <h4>Tipo de Evento</h4>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>📻 Programas</span>
+                        </label>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>⚽ Partidos</span>
+                        </label>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>🎯 Eventos Especiales</span>
+                        </label>
+                    </div>
+                    
+                    <div className={styles.filterGroup}>
+                        <h4>Estado</h4>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>🔴 En Vivo</span>
+                        </label>
+                        <label className={styles.filterCheckbox}>
+                            <input type="checkbox" defaultChecked />
+                            <span>⏰ Próximos</span>
+                        </label>
+                    </div>
+                </div>
+
+                {/* Recordatorios */}
+                <div className={styles.remindersSection}>
+                    <h3 className={styles.sidebarTitle}>
+                        <span className={styles.titleIcon}>⏰</span>
+                        Mis Recordatorios
+                    </h3>
+                    <div className={styles.remindersList}>
+                        <div className={styles.reminderItem}>
+                            <span className={styles.reminderSport}>⚽</span>
+                            <div className={styles.reminderInfo}>
+                                <span className={styles.reminderTitle}>Boca vs River</span>
+                                <span className={styles.reminderTime}>Hoy 21:00</span>
+                            </div>
+                            <button className={styles.removeReminder}>🗑️</button>
+                        </div>
+                        <div className={styles.reminderItem}>
+                            <span className={styles.reminderSport}>🏀</span>
+                            <div className={styles.reminderInfo}>
+                                <span className={styles.reminderTitle}>Lakers vs Warriors</span>
+                                <span className={styles.reminderTime}>Mañana 20:30</span>
+                            </div>
+                            <button className={styles.removeReminder}>🗑️</button>
                         </div>
                     </div>
                 </div>
 
-                {/* Sidebar */}
-                <div className={styles.sidebar}>
-                    {/* Locutores Destacados */}
-                    <div className={styles.hostsSection}>
-                        <h3 className={styles.sidebarTitle}>
-                            <span className={styles.titleIcon}>🎙️</span>
-                            Nuestros Locutores
-                        </h3>
-                        <div className={styles.hostsList}>
-                            {featuredHosts.map(host => (
-                                <div key={host.id} className={styles.hostCard}>
-                                    <div className={styles.hostImage}>
-                                        {host.image}
-                                    </div>
-                                    <div className={styles.hostInfo}>
-                                        <h4 className={styles.hostName}>
-                                            {host.name}
-                                        </h4>
-                                        <span className={styles.hostRole}>
-                                            {host.role}
-                                        </span>
-                                        <div className={styles.hostDetails}>
-                                            <span className={styles.hostExperience}>
-                                                {host.experience}
-                                            </span>
-                                            <span className={styles.hostSpecialty}>
-                                                {host.specialty}
-                                            </span>
-                                        </div>
-                                        <div className={styles.hostPrograms}>
-                                            {host.programs.map((program, index) => (
-                                                <span key={index} className={styles.hostProgram}>
-                                                    {program}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                {/* Estadísticas */}
+                <div className={styles.statsSection}>
+                    <h3 className={styles.sidebarTitle}>
+                        <span className={styles.titleIcon}>📊</span>
+                        Estadísticas
+                    </h3>
+                    <div className={styles.statsGrid}>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>12</span>
+                            <span className={styles.statLabel}>Eventos Hoy</span>
                         </div>
-                    </div>
-
-                    {/* Horario Destacado */}
-                    <div className={styles.scheduleSection}>
-                        <h3 className={styles.sidebarTitle}>
-                            <span className={styles.titleIcon}>⏰</span>
-                            Próximos en Vivo
-                        </h3>
-                        <div className={styles.scheduleList}>
-                            <div className={styles.scheduleItem}>
-                                <div className={styles.scheduleTime}>
-                                    <span>07:00</span>
-                                    <span>Hoy</span>
-                                </div>
-                                <div className={styles.scheduleInfo}>
-                                    <span className={styles.scheduleProgram}>
-                                        Titulares Deportivos
-                                    </span>
-                                    <span className={styles.scheduleHosts}>
-                                        Carlos Ruiz & Ana Martínez
-                                    </span>
-                                </div>
-                            </div>
-                            <div className={styles.scheduleItem}>
-                                <div className={styles.scheduleTime}>
-                                    <span>16:00</span>
-                                    <span>Hoy</span>
-                                </div>
-                                <div className={styles.scheduleInfo}>
-                                    <span className={styles.scheduleProgram}>
-                                        Zona de Juego
-                                    </span>
-                                    <span className={styles.scheduleHosts}>
-                                        Pedro Gómez
-                                    </span>
-                                </div>
-                            </div>
-                            <div className={styles.scheduleItem}>
-                                <div className={styles.scheduleTime}>
-                                    <span>18:00</span>
-                                    <span>Hoy</span>
-                                </div>
-                                <div className={styles.scheduleInfo}>
-                                    <span className={styles.scheduleProgram}>
-                                        La Tribuna
-                                    </span>
-                                    <span className={styles.scheduleHosts}>
-                                        Roberto Díaz & María Lopez
-                                    </span>
-                                </div>
-                            </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>8</span>
+                            <span className={styles.statLabel}>En Vivo</span>
                         </div>
-                    </div>
-
-                    {/* Estadísticas */}
-                    <div className={styles.statsSection}>
-                        <h3 className={styles.sidebarTitle}>
-                            <span className={styles.titleIcon}>📊</span>
-                            Estadísticas
-                        </h3>
-                        <div className={styles.statsGrid}>
-                            <div className={styles.statItem}>
-                                <span className={styles.statValue}>12</span>
-                                <span className={styles.statLabel}>Programas Activos</span>
-                            </div>
-                            <div className={styles.statItem}>
-                                <span className={styles.statValue}>25K</span>
-                                <span className={styles.statLabel}>Oyentes Diarios</span>
-                            </div>
-                            <div className={styles.statItem}>
-                                <span className={styles.statValue}>8</span>
-                                <span className={styles.statLabel}>Locutores</span>
-                            </div>
-                            <div className={styles.statItem}>
-                                <span className={styles.statValue}>168</span>
-                                <span className={styles.statLabel}>Horas/Semana</span>
-                            </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>45</span>
+                            <span className={styles.statLabel}>Esta Semana</span>
+                        </div>
+                        <div className={styles.statItem}>
+                            <span className={styles.statValue}>3</span>
+                            <span className={styles.statLabel}>Destacados</span>
                         </div>
                     </div>
                 </div>
